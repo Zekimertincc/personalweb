@@ -34,25 +34,6 @@ body {
     overflow: visible;
 }
 
-.navbar::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -13px;
-    height: 10px;
-    background: repeating-linear-gradient(
-      110deg,
-      #000 0px,
-      #000 10px,
-      transparent 10px,
-      transparent 22px
-    );
-    transform: skewY(-8deg);
-    transform-origin: left;
-    pointer-events: none;
-}
-
 /* Navbar Linkleri */
 .navbar ul {
     display: flex;
