@@ -5,11 +5,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    --sidebar-width: 250px;
+}
+
 /* Body ve Grid Sistemi */
 body {
     font-family: "Inter", sans-serif;
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
     "navbar navbar"
@@ -27,7 +31,7 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 2rem 2.25rem;
     margin: 0;
     background-color: #fff;
 
@@ -41,12 +45,12 @@ body {
 .navbar::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: var(--sidebar-width);
     right: 0;
     height: 1px;
     background: #000;
 
-    top: 112px; /* ⬅⬅⬅ BUNU OYNAT: 95-140 arası */
+    bottom: 0;
     z-index: 5;
     pointer-events: none;
 }
@@ -77,6 +81,7 @@ body {
     flex-direction: column;
     padding: 0;
     margin: 0;
+    width: var(--sidebar-width);
 }
 
 .sidebar .content {
@@ -206,11 +211,11 @@ body {
 
 .nav-devil {
     position: absolute;
-    top: -24px;     /* ⬅ hafif yukarı taş */
-    right: -20px;
+    right: clamp(1rem, 5vw, 3rem);
+    bottom: -72px;
 
-    width: 560px;  /* ⬅ büyüklük */
-    height: 340px; /* ⬅ eller + yüz sığsın */
+    width: 440px;
+    height: 300px;
 
     pointer-events: none;
     z-index: 50;
@@ -235,9 +240,9 @@ body {
 
 .devil-img {
     position: absolute;
-    right: 0px;
-    top: 42px;     /* ⬅⬅⬅ Eller çizgiye otursun: 30-60 arası oynat */
-    width: 560px;
+    right: 0;
+    bottom: 18px;
+    width: 440px;
     height: auto;
 
     user-select: none;
@@ -257,19 +262,23 @@ body {
 
 /* Mobilde biraz küçült */
 @media (max-width: 768px) {
+    :root {
+        --sidebar-width: 0px;
+    }
+
     .nav-devil {
-        top: -10px;
-        right: -10px;
-        width: 380px;
-        height: 240px;
+        right: 1rem;
+        bottom: -52px;
+        width: 320px;
+        height: 220px;
     }
 
     .devil-img {
-        width: 380px;
-        top: 30px;
+        width: 320px;
+        bottom: 14px;
     }
 
     .navbar::after {
-        top: 92px;
+        left: 0;
     }
 }
