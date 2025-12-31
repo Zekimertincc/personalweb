@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Tag: {{ term.name }}</h1>
+  {% if term.pages | length > 0 %}
+    <ul>
+      {% for post in term.pages %}
+        <li>
+          <a href="{{ post.permalink }}">{{ post.title }}</a>
+          {% if post.date %} — {{ post.date | date(format="%B %d, %Y") }}{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts found for this tag.</p>
+  {% endif %}
+{% endblock content %}
