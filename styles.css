@@ -10,10 +10,9 @@ body {
     font-family: 'Inter', sans-serif;
     display: grid;
     grid-template-columns: 250px 1fr;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas: 
       "navbar navbar"
-      "ticker ticker"
       "sidebar main";
     min-height: 100vh;
     margin: 0;
@@ -35,6 +34,25 @@ body {
     overflow: visible;
 }
 
+.navbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -13px;
+    height: 10px;
+    background: repeating-linear-gradient(
+      110deg,
+      #000 0px,
+      #000 10px,
+      transparent 10px,
+      transparent 22px
+    );
+    transform: skewY(-8deg);
+    transform-origin: left;
+    pointer-events: none;
+}
+
 /* Navbar Linkleri */
 .navbar ul {
     display: flex;
@@ -51,47 +69,6 @@ body {
 
 .navbar ul li a:hover {
     opacity: 0.7;
-}
-
-/* Ticker (Kayan Yazı) */
-.ticker-wrapper {
-    grid-area: ticker;
-    border-bottom: 1px solid #000;
-    overflow: hidden;
-    background-color: #000000;
-    position: relative;
-    height: 50px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.ticker {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.ticker-content {
-    display: inline-block;
-    white-space: nowrap;
-    animation: ticker 60s linear infinite;
-    font-size: 18px;
-    font-weight: 500;
-    color: #ffffff;
-    position: absolute;
-    left: 100%;
-}
-
-@keyframes ticker {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-200%);
-    }
 }
 /* Reset sidebar styling completely */
 .sidebar {
@@ -164,7 +141,6 @@ body {
       grid-template-columns: 1fr;
       grid-template-areas: 
         "navbar"
-        "ticker"
         "main";
     }
     
@@ -227,14 +203,6 @@ body {
       padding: 1rem;
     }
     
-    /* Ticker adjustments */
-    .ticker-wrapper {
-      height: 40px;
-    }
-    
-    .ticker-content {
-      font-size: 16px;
-    }
   }
   
   /* Smaller screens */
@@ -247,13 +215,6 @@ body {
       font-size: 1.5rem;
     }
     
-    .ticker-wrapper {
-      height: 35px;
-    }
-    
-    .ticker-content {
-      font-size: 14px;
-    }
   }
 
   .close-btn {
@@ -305,7 +266,6 @@ body {
       grid-template-columns: 1fr;
       grid-template-areas: 
         "navbar"
-        "ticker"
         "main";
     }
     
@@ -348,14 +308,6 @@ body {
       padding: 1rem;
     }
     
-    /* Ticker düzenlemeleri */
-    .ticker-wrapper {
-      height: 40px;
-    }
-    
-    .ticker-content {
-      font-size: 16px;
-    }
   }
   
   /* Daha küçük ekranlar */
@@ -368,13 +320,6 @@ body {
       font-size: 1.5rem;
     }
     
-    .ticker-wrapper {
-      height: 35px;
-    }
-    
-    .ticker-content {
-      font-size: 14px;
-    }
   }
 
 
@@ -386,10 +331,10 @@ body {
 
 .nav-devil{
   position: absolute;
-  top: -26px;      /* peek from above */
-  right: 6px;
-  width: 420px;    /* bigger */
-  height: 260px;   /* allow overlap below navbar */
+  top: -18px;      /* peek from above */
+  right: 14px;
+  width: 360px;
+  height: 220px;   /* allow overlap below navbar */
   pointer-events: none;
   z-index: 50;
 }
@@ -405,15 +350,15 @@ body {
   --eyeRx: 63.5%;
   --eyeRy: 49%;
 
-  --eyeLr: 1.2%;
-  --eyeRr: 1.2%;
+  --eyeLr: 0.9%;
+  --eyeRr: 0.9%;
 }
 
 .devil-img{
   position: absolute;
-  right: -110px;       /* move image to the right for peek composition */
-  top: -26px;
-  width: 540px;       /* larger than wrap */
+  right: -82px;       /* move image to the right for peek composition */
+  top: -18px;
+  width: 480px;
   height: auto;
   image-rendering: auto;
   user-select: none;
@@ -431,9 +376,9 @@ body {
 
 @media (max-width: 768px){
   .nav-devil{ 
-    top: -18px;
+    top: -12px;
     right: 0px;
-    width: 300px;
-    height: 200px;
+    width: 280px;
+    height: 180px;
   }
 }

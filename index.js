@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const tickerWrapper = document.querySelector('.ticker-wrapper');
-  const tickerContent = document.querySelector('.ticker-content');
-  const sidebar = document.querySelector('.sidebar');
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
   
@@ -24,37 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     closeMenuButton.style.display = 'none';
   });
 
-  // Ticker içeriğini oluştur
-  const news = [
-      "Son Dakika: Yeni makaleler yayınlandı!",
-      "Kategoride yeni içerikler eklendi",
-      "Yenilikler hakkında daha fazla bilgi için iletişime geçin",
-      "Zeki İnceoğlu'nun yeni kitabı yakında çıkıyor",
-      "Özel içerikler için bültenimize abone olun",
-      "Web sitemiz yenilendi! Yeni özellikler keşfedin"
-  ];
-
-  function createTickerContent() {
-      tickerContent.innerHTML = '';
-      const allNews = [...news, ...news];
-
-      allNews.forEach((item, index) => {
-          const newsSpan = document.createElement('span');
-          newsSpan.className = 'news-item';
-          newsSpan.textContent = item;
-          tickerContent.appendChild(newsSpan);
-
-          if (index < allNews.length - 1) {
-              const separator = document.createElement('span');
-              separator.className = 'news-separator';
-              separator.innerHTML = ' &bull; ';
-              tickerContent.appendChild(separator);
-          }
-      });
-  }
-  
-  createTickerContent();
-
   // Hamburger menüsüne tıklama olayı
   if (hamburger) {
     hamburger.addEventListener('click', function(e) {
@@ -76,19 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
       closeMenuButton.style.display = 'none';
     }
   });
-
-  // Ticker üzerine gelindiğinde animasyonu durdur
-  if (tickerWrapper) {
-    tickerWrapper.addEventListener('mouseenter', function() {
-      tickerContent.style.color = 'rgb(234, 239, 44)'; // Sarı renk
-      tickerContent.style.animationPlayState = 'paused';
-    });
-
-    tickerWrapper.addEventListener('mouseleave', function() {
-      tickerContent.style.color = '#ffffff'; // Beyaz renk
-      tickerContent.style.animationPlayState = 'running';
-    });
-  }
 
   // Rastgele hover rengi işlevi
   const categoryItems = document.querySelectorAll('.sidebar .content');
@@ -137,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // =========================
-  // DEVIL EYES (FIXED + CLAMP)
+  // DEVIL EYES (HORIZONTAL FOLLOW)
   // =========================
   const devilWrap = document.querySelector('.devil-wrap');
   const devilImg  = document.querySelector('.devil-img');
@@ -167,19 +120,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Daire içinde clamp: pupil göz çukurundan çıkamaz
-  function setPupilClamped(pupilEl, eyeCenter, target, eyeRadiusPx, followStrength) {
-    const dx = target.x - eyeCenter.x;
-    const dy = target.y - eyeCenter.y;
-
-    const dist = Math.hypot(dx, dy) || 1;
+  function setPupilClamped(pupilEl, eyeCenter, targetX, eyeRadiusPx, followStrength) {
+    const dx = targetX - eyeCenter.x;
+    const dist = Math.abs(dx) || 1;
     const ux = dx / dist;
-    const uy = dy / dist;
 
     // hedefe doğru giderken oynaklık: mesafeye göre büyür ama radius'u geçmez
     const desired = Math.min(eyeRadiusPx, dist * followStrength);
 
     const x = eyeCenter.x + ux * desired;
-    const y = eyeCenter.y + uy * desired;
+    const y = eyeCenter.y; // sadece X ekseni hareketi
 
     pupilEl.style.left = `${x}px`;
     pupilEl.style.top  = `${y}px`;
@@ -196,28 +146,24 @@ document.addEventListener('DOMContentLoaded', function() {
       const imgRect  = devilImg.getBoundingClientRect();
 
       // mouse'u wrap koordinatına çevir
-      const target = {
-        x: last.x - wrapRect.left,
-        y: last.y - wrapRect.top
-      };
-
+      const targetX = last.x - wrapRect.left;
       // göz merkezleri (yüzdeyle)
       const eyeL = getEyeOnWrap('--eyeLx', '--eyeLy');
       const eyeR = getEyeOnWrap('--eyeRx', '--eyeRy');
 
       // radius'u otomatik ölçekle:
       // img genişliğine göre  (default ~ %3.2)
-      const rLPct = readCSSNumber(devilWrap, '--eyeLr', 1.2); // yüzde
-      const rRPct = readCSSNumber(devilWrap, '--eyeRr', 1.2); // yüzde
+      const rLPct = readCSSNumber(devilWrap, '--eyeLr', 0.9); // yüzde
+      const rRPct = readCSSNumber(devilWrap, '--eyeRr', 0.9); // yüzde
 
       const eyeRadiusL = (rLPct / 100) * imgRect.width;
       const eyeRadiusR = (rRPct / 100) * imgRect.width;
 
-      // takip gücü (oynaklık): 0.18 iyi, taşarsa 0.15'e indir
-      const followStrength = 0.28;
+      // takip gücü (oynaklık) küçültüldü
+      const followStrength = 0.16;
 
-      setPupilClamped(pupilL, eyeL, target, eyeRadiusL, followStrength);
-      setPupilClamped(pupilR, eyeR, target, eyeRadiusR, followStrength);
+      setPupilClamped(pupilL, eyeL, targetX, eyeRadiusL, followStrength);
+      setPupilClamped(pupilR, eyeR, targetX, eyeRadiusR, followStrength);
     }
 
     function onMove(clientX, clientY) {
