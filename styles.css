@@ -93,7 +93,7 @@ body {
 }
 
 .sidebar .content:first-child {
-    border-top: 0;
+    border-top: 1px solid #000;
 }
 
 .sidebar .content a {
@@ -212,7 +212,7 @@ body {
 .nav-devil {
     position: absolute;
     right: clamp(1rem, 5vw, 3rem);
-    bottom: -72px;
+    bottom: -120px;
 
     width: 440px;
     height: 300px;
