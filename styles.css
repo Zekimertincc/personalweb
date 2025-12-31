@@ -1,0 +1,439 @@
+/* Genel sıfırlama */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body ve Grid Sistemi */
+body {
+    font-family: 'Inter', sans-serif;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: 
+      "navbar navbar"
+      "ticker ticker"
+      "sidebar main";
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+/* Navbar */
+.navbar {
+    grid-area: navbar;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #000;
+    margin: 0;
+    background-color: #fff;
+    position: relative;
+    overflow: visible;
+}
+
+/* Navbar Linkleri */
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+    transition: opacity 0.2s ease;
+}
+
+.navbar ul li a:hover {
+    opacity: 0.7;
+}
+
+/* Ticker (Kayan Yazı) */
+.ticker-wrapper {
+    grid-area: ticker;
+    border-bottom: 1px solid #000;
+    overflow: hidden;
+    background-color: #000000;
+    position: relative;
+    height: 50px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.ticker {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.ticker-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker 60s linear infinite;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    position: absolute;
+    left: 100%;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-200%);
+    }
+}
+/* Reset sidebar styling completely */
+.sidebar {
+    grid-area: sidebar;
+    border-right: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .content {
+    border: none;
+    border-bottom: 1px solid #000;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease; /* Add smooth transition for background */
+}
+
+
+
+/* First item can have a top border if needed */
+.sidebar .content:first-child {
+    border-top: 0;
+}
+
+.sidebar .content a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    padding: 1.2rem 2rem;
+    transition: color 0.3s ease, opacity 0.2s ease; /* Add transition for color and opacity */
+}
+
+.sidebar .content a:hover {
+    opacity: 0.7;
+}
+
+
+/* Existing CSS remains the same */
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+  }
+  
+  .hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #000;
+    border-radius: 3px;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    /* Update grid layout */
+    body {
+      grid-template-columns: 1fr;
+      grid-template-areas: 
+        "navbar"
+        "ticker"
+        "main";
+    }
+    
+    /* Show hamburger, hide nav links */
+    .hamburger-menu {
+      display: block;
+    }
+    
+    .navbar ul.nav-links {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    
+    .navbar ul.nav-links.active {
+      display: flex;
+    }
+    
+    .navbar ul.nav-links li {
+      margin: 20px 0;
+    }
+    
+    /* Sidebar becomes a sliding menu */
+    .sidebar {
+      position: fixed;
+      left: -250px;
+      top: 0;
+      height: 100vh;
+      width: 250px;
+      background-color: white;
+      z-index: 5;
+      transition: left 0.3s ease;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .sidebar.active {
+      left: 0;
+    }
+    
+    /* Add close button to sidebar */
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 24px;
+    }
+    
+    /* Main content takes full width */
+    .main {
+      grid-area: main;
+      padding: 1rem;
+    }
+    
+    /* Ticker adjustments */
+    .ticker-wrapper {
+      height: 40px;
+    }
+    
+    .ticker-content {
+      font-size: 16px;
+    }
+  }
+  
+  /* Smaller screens */
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .name-container h1 {
+      font-size: 1.5rem;
+    }
+    
+    .ticker-wrapper {
+      height: 35px;
+    }
+    
+    .ticker-content {
+      font-size: 14px;
+    }
+  }
+
+  .close-btn {
+    display: none;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    /* Mobil görünümde sidebar ve kapatma butonu için stil */
+    .sidebar {
+      position: fixed;
+      left: -250px;
+      top: 0;
+      height: 100vh;
+      width: 250px;
+      background-color: white;
+      z-index: 50;
+      transition: left 0.3s ease;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .sidebar.active {
+      left: 0;
+    }
+    
+    /* Sidebar aktif olduğunda kapatma butonunu göster */
+    .sidebar.active .close-btn {
+      display: block;
+    }
+  }
+
+
+  /* Tam sayfa menü için kapatma butonu */
+.close-menu-btn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #000;
+    cursor: pointer;
+    z-index: 200;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    /* Güncellenen grid düzeni */
+    body {
+      grid-template-columns: 1fr;
+      grid-template-areas: 
+        "navbar"
+        "ticker"
+        "main";
+    }
+    
+    /* Hamburger göster, nav linklerini gizle */
+    .hamburger-menu {
+      display: block;
+    }
+    
+    /* Tam sayfa menü stili */
+    .navbar ul.nav-links {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .navbar ul.nav-links.active {
+      display: flex;
+    }
+    
+    .navbar ul.nav-links li {
+      margin: 20px 0;
+    }
+    
+    /* Sidebar'ı gizle (artık kullanılmıyor) */
+    .sidebar {
+      display: none;
+    }
+    
+    /* Ana içerik tam genişlikte */
+    .main {
+      grid-area: main;
+      padding: 1rem;
+    }
+    
+    /* Ticker düzenlemeleri */
+    .ticker-wrapper {
+      height: 40px;
+    }
+    
+    .ticker-content {
+      font-size: 16px;
+    }
+  }
+  
+  /* Daha küçük ekranlar */
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .name-container h1 {
+      font-size: 1.5rem;
+    }
+    
+    .ticker-wrapper {
+      height: 35px;
+    }
+    
+    .ticker-content {
+      font-size: 14px;
+    }
+  }
+
+
+/* Devil peek in navbar */
+.navbar{
+  position: relative; /* for absolute devil */
+}
+
+
+.nav-devil{
+  position: absolute;
+  top: -26px;      /* peek from above */
+  right: 6px;
+  width: 420px;    /* bigger */
+  height: 260px;   /* allow overlap below navbar */
+  pointer-events: none;
+  z-index: 50;
+}
+
+.devil-wrap{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;     /* “pencere/pervaz” kırpma */
+  /* Eye anchor points are percentages of the *image* bounds (not the wrap) */
+  --eyeLx: 52%;
+  --eyeLy: 49%;
+  --eyeRx: 63.5%;
+  --eyeRy: 49%;
+
+  --eyeLr: 1.2%;
+  --eyeRr: 1.2%;
+}
+
+.devil-img{
+  position: absolute;
+  right: -110px;       /* move image to the right for peek composition */
+  top: -26px;
+  width: 540px;       /* larger than wrap */
+  height: auto;
+  image-rendering: auto;
+  user-select: none;
+}
+
+.pupil {
+  width: 7px;          /* DAHA KÜÇÜK */
+  height: 7px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@media (max-width: 768px){
+  .nav-devil{ 
+    top: -18px;
+    right: 0px;
+    width: 300px;
+    height: 200px;
+  }
+}
