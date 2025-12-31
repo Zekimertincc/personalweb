@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const pctX = parseFloat(styles.getPropertyValue(varNameX)) / 100;
     const pctY = parseFloat(styles.getPropertyValue(varNameY)) / 100;
 
-    const x = imgRect.left - wrapRect.left + pctX * imgRect.width;
+    const x = imgRect.left - wrapRect.left + pctX * imgRect.width -10;
     const y = imgRect.top - wrapRect.top + pctY * imgRect.height;
     return { x, y };
   }

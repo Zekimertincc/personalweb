@@ -230,7 +230,7 @@ body {
     /* Göz anchor noktaları (img üstündeki yüzde) */
     --eyeLx: 50.5%;
     --eyeLy: 46.5%;
-    --eyeRx: 61.8%;
+    --eyeRx: 56.8%;
     --eyeRy: 46.5%;
 
     /* pupil'in göz içinde kalacağı yarıçap (img genişliğinin yüzdesi) */
@@ -241,11 +241,14 @@ body {
 .devil-img {
     position: absolute;
     right: 0;
-    bottom: 18px;
+    bottom: -20px;
     width: 440px;
     height: auto;
 
     user-select: none;
+    transform: rotate(6.2deg); /* ⬅ sola yatıksa +2deg, sağa yatıksa -2deg */
+    transform-origin: center center;
+
 }
 
 /* Pupil: küçük ve temiz */

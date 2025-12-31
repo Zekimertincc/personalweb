@@ -20,8 +20,6 @@ smart_punctuation = true
 
 [extra]
 nav_links = [
-  { name = "Home", url = "/" },
-  { name = "Tags", url = "/tags/" }
 ]
 
 sidebar_categories = [

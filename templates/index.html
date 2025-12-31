@@ -1,35 +1,5 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {{ section.content | safe }}
-
-  {% set posts = section.pages | sort(attribute="date") | reverse %}
-  {% if posts | length > 0 %}
-    <section class="posts">
-      {% for post in posts %}
-        <article class="post-card">
-          <h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
-          {% if post.date %}
-            <p class="post-meta">{{ post.date | date(format="%B %d, %Y") }}</p>
-          {% endif %}
-          {% if post.summary %}
-            <p>{{ post.summary | safe }}</p>
-          {% elif post.description %}
-            <p>{{ post.description }}</p>
-          {% else %}
-            <p>{{ post.content | striptags | truncate(length=160) }}</p>
-          {% endif %}
-          {% if post.taxonomies and post.taxonomies.tags %}
-            <p class="tags">
-              {% for tag in post.taxonomies.tags %}
-                <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">{{ tag }}</a>{% if not loop.last %} &middot; {% endif %}
-              {% endfor %}
-            </p>
-          {% endif %}
-        </article>
-      {% endfor %}
-    </section>
-  {% else %}
-    <p>No posts yet. Add markdown files under <code>content/</code> to see them here.</p>
-  {% endif %}
+{{ section.content | safe }}
 {% endblock content %}
