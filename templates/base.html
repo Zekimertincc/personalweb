@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% if page %}
+    {% set current_title = page.title %}
+  {% elif section %}
+    {% set current_title = section.title %}
+  {% else %}
+    {% set current_title = config.title %}
+  {% endif %}
+  <title>{{ current_title }}{% if current_title and current_title != config.title %} | {{ config.title }}{% endif %}</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  {% include "partials/nav.html" %}
+
+  <div class="sidebar">
+    {% for item in config.extra.sidebar_categories %}
+      <div class="content"><a href="{{ item.url | default(value="#") }}">{{ item.name }}</a></div>
+    {% endfor %}
+  </div>
+
+  <div class="main">
+    {%- block content -%}{%- endblock content -%}
+  </div>
+
+  <script src="/index.js" defer></script>
+</body>
+</html>

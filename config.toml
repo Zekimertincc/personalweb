@@ -1,0 +1,34 @@
+# For GitHub Pages set this to either https://<user>.github.io (user/org pages)
+# or https://<user>.github.io/<repo>/ (project pages). Update before deploying.
+base_url = "https://<user>.github.io"
+
+# Site metadata
+title = "Zeki Inceoglu"
+description = "Personal site powered by Zola"
+default_language = "en"
+
+# Enable feeds for the whole site and sections
+generate_feeds = true
+
+# Taxonomies
+[[taxonomies]]
+name = "tags"
+feed = true
+
+[markdown]
+# Render emoji and smart punctuation for nicer typography
+render_emoji = true
+smart_punctuation = true
+
+[extra]
+nav_links = [
+  { name = "Home", url = "/" },
+  { name = "Tags", url = "/tags/" }
+]
+
+sidebar_categories = [
+  { name = "Category 1", url = "#" },
+  { name = "Category 2", url = "#" },
+  { name = "Category 3", url = "#" },
+  { name = "Category 4", url = "#" }
+]
