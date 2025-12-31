@@ -5,7 +5,6 @@ base_url = "https://<user>.github.io"
 # Site metadata
 title = "Zeki Inceoglu"
 description = "Personal site powered by Zola"
-default_language = "en"
 
 # Enable feeds for the whole site and sections
 generate_feeds = true
@@ -13,7 +12,6 @@ generate_feeds = true
 # Taxonomies
 [[taxonomies]]
 name = "tags"
-feed = true
 
 [markdown]
 # Render emoji and smart punctuation for nicer typography
