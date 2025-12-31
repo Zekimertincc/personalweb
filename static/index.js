@@ -184,4 +184,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // İlk konum
     document.dispatchEvent(new Event("mouseleave"));
   }
+  window.addEventListener("load", () => {
+    const intro = document.getElementById("intro-overlay");
+    if (!intro) return;
+
+    // Keep the white loading screen for ~1–2 seconds, then fade out smoothly.
+    const SHOW_MS = 1600;
+    const FADE_MS = 520; // must match CSS @keyframes introFade duration
+
+    setTimeout(() => {
+      intro.classList.add("out");
+      setTimeout(() => intro.remove(), FADE_MS + 60);
+    }, SHOW_MS);
+  });
+
 });

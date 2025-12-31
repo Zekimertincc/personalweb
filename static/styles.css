@@ -206,57 +206,6 @@ body {
 }
 
 /* =========================
-   MANIFESTO
-   ========================= */
-.manifesto {
-    position: relative;
-    column-count: 2;
-    column-gap: 140px;
-    max-width: 980px;
-    margin: 0 auto;
-}
-
-.manifesto::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 26px;
-    opacity: 0.55;
-    background-image: url("/ornament.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    pointer-events: none;
-}
-
-.manifesto p {
-    break-inside: avoid;
-    margin-bottom: 1.25rem;
-}
-
-.manifesto p:first-of-type::first-letter {
-    float: left;
-    font-size: 3.5rem;
-    line-height: 1;
-    padding: 0.15rem 0.5rem 0.1rem 0;
-    font-weight: 700;
-}
-
-@media (max-width: 900px) {
-    .manifesto {
-        column-count: 1;
-        column-gap: 1.5rem;
-    }
-
-    .manifesto::before {
-        display: none;
-    }
-}
-
-/* =========================
    DEVIL (Navbar Peek)
    ========================= */
 
@@ -335,4 +284,112 @@ body {
     .navbar::after {
         left: 0;
     }
+}
+
+/* =========================
+   INTRO OVERLAY (loading)
+   ========================= */
+#intro-overlay{
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#intro-overlay img{
+  width: min(560px, 72vw);
+  height: auto;
+  transform-origin: center;
+  animation: introPulse 1.05s ease-in-out infinite;
+}
+
+#intro-overlay.out{
+  animation: introFade 520ms ease-out forwards;
+}
+
+#intro-overlay.out img{
+  animation: introPulse 1.05s ease-in-out 1;
+}
+
+@keyframes introPulse{
+  0%{ transform: scale(0.92); opacity: 0.0; }
+  20%{ opacity: 1; }
+  50%{ transform: scale(1.03); opacity: 1; }
+  100%{ transform: scale(0.92); opacity: 1; }
+}
+
+@keyframes introFade{
+  to{ opacity: 0; visibility: hidden; }
+}
+
+/* =========================
+   MANIFESTO TYPO (medieval spread)
+   ========================= */
+.manifesto{
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 64px 56px;
+
+  font-family: "EB Garamond", serif;
+  font-size: 18px;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  color: #111;
+
+  column-count: 2;
+  column-gap: 140px; /* keep space for ornament */
+  column-fill: auto;
+}
+
+.manifesto p{
+  break-inside: avoid;
+  margin: 0 0 1.35em 0;
+}
+
+/* Drop cap */
+.manifesto p:first-of-type::first-letter{
+  float: left;
+  font-size: 3.6em;
+  line-height: 0.9;
+  padding-right: 12px;
+  padding-top: 6px;
+  font-weight: 600;
+}
+
+/* Yellow selection like your reference */
+.manifesto ::selection{
+  background: #ffe600;
+  color: #000;
+}
+.manifesto ::-moz-selection{
+  background: #ffe600;
+  color: #000;
+}
+
+/* Ornament divider in the column gap */
+.manifesto::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 64px;
+  bottom: 64px;
+
+  width: 26px;
+  background: url("/ornament.png") center / contain no-repeat;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+@media (max-width: 900px){
+  .manifesto{
+    column-count: 1;
+    column-gap: 0;
+    padding: 48px 24px;
+  }
+  .manifesto::after{ display: none; }
 }
