@@ -1,72 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zeki Inceoglu</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeki Inceoglu</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+          rel="stylesheet"
+  />
+</head>
 
-    <style>
-      /* Mobil görünümde kapatma butonu için stil */
-      @media (max-width: 768px) {
-        .sidebar.active .close-btn {
-          display: block !important;
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          cursor: pointer;
-          font-size: 24px;
-          z-index: 100;
-          color: #000;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="name-container">
-        <h1>Zeki Inceoglu</h1>
-      </div>
-      <div class="hamburger-menu">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div class="nav-devil" aria-hidden="true">
-        <div class="devil-wrap">
-          <img src="seytan.png" alt="" class="devil-img">
-          <div class="pupil pupil-l"></div>
-          <div class="pupil pupil-r"></div>
-        </div>
-      </div>
-      <ul class="nav-links"></ul>
-    </nav>
+<body>
+<nav class="navbar">
+  <div class="name-container">
+    <h1>Zeki Inceoglu</h1>
+  </div>
 
-    <div class="sidebar">
-      <div class="content">
-        <a href="">Category 1</a>
-      </div>
-      <div class="content">
-        <a href="">Category 2</a>
-      </div>
-      <div class="content">
-        <a href="">Category 3</a>
-      </div>
-      <div class="content">
-        <a href="">Category 4</a>
-      </div>
+  <div class="hamburger-menu">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+  </div>
 
-    <div class="main">
-      <!-- İçerik buraya gelecek -->
+  <!-- DEVIL -->
+  <div class="nav-devil" aria-hidden="true">
+    <div class="devil-wrap">
+      <img src="seytan.png" alt="" class="devil-img" />
+      <div class="pupil pupil-l"></div>
+      <div class="pupil pupil-r"></div>
     </div>
+  </div>
 
-    <script src="index.js"></script>
-  </body>
+  <ul class="nav-links"></ul>
+</nav>
+
+<div class="sidebar">
+  <div class="content"><a href="">Category 1</a></div>
+  <div class="content"><a href="">Category 2</a></div>
+  <div class="content"><a href="">Category 3</a></div>
+  <div class="content"><a href="">Category 4</a></div>
+</div>
+
+<div class="main">
+  <!-- İçerik buraya gelecek -->
+</div>
+
+<script src="index.js"></script>
+</body>
 </html>

@@ -7,13 +7,13 @@
 
 /* Body ve Grid Sistemi */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-template-rows: auto 1fr;
-    grid-template-areas: 
-      "navbar navbar"
-      "sidebar main";
+    grid-template-areas:
+    "navbar navbar"
+    "sidebar main";
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -26,12 +26,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: 1.5rem 2rem;
-    border-bottom: 1px solid #000;
     margin: 0;
     background-color: #fff;
+
     position: relative;
     overflow: visible;
+
+    border-bottom: none; /* çizgiyi artık pseudo ile yapacağız */
+}
+
+/* NAVBAR ÇİZGİSİ (şeytanın tutunduğu hat) */
+.navbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #000;
+
+    top: 112px; /* ⬅⬅⬅ BUNU OYNAT: 95-140 arası */
+    z-index: 5;
+    pointer-events: none;
 }
 
 /* Navbar Linkleri */
@@ -51,7 +68,8 @@ body {
 .navbar ul li a:hover {
     opacity: 0.7;
 }
-/* Reset sidebar styling completely */
+
+/* Sidebar */
 .sidebar {
     grid-area: sidebar;
     border-right: 1px solid #000;
@@ -66,12 +84,9 @@ body {
     border-bottom: 1px solid #000;
     margin: 0;
     padding: 0;
-    transition: background-color 0.3s ease; /* Add smooth transition for background */
+    transition: background-color 0.3s ease;
 }
 
-
-
-/* First item can have a top border if needed */
 .sidebar .content:first-child {
     border-top: 0;
 }
@@ -83,152 +98,42 @@ body {
     display: block;
     width: 100%;
     padding: 1.2rem 2rem;
-    transition: color 0.3s ease, opacity 0.2s ease; /* Add transition for color and opacity */
+    transition: color 0.3s ease, opacity 0.2s ease;
 }
 
 .sidebar .content a:hover {
     opacity: 0.7;
 }
 
-
-/* Existing CSS remains the same */
-
 /* Hamburger Menu */
 .hamburger-menu {
     display: none;
     cursor: pointer;
-  }
-  
-  .hamburger {
+}
+
+.hamburger {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 24px;
     width: 30px;
-  }
-  
-  .hamburger span {
+}
+
+.hamburger span {
     display: block;
     height: 3px;
     width: 100%;
     background-color: #000;
     border-radius: 3px;
-  }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    /* Update grid layout */
-    body {
-      grid-template-columns: 1fr;
-      grid-template-areas: 
-        "navbar"
-        "main";
-    }
-    
-    /* Show hamburger, hide nav links */
-    .hamburger-menu {
-      display: block;
-    }
-    
-    .navbar ul.nav-links {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: white;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-    }
-    
-    .navbar ul.nav-links.active {
-      display: flex;
-    }
-    
-    .navbar ul.nav-links li {
-      margin: 20px 0;
-    }
-    
-    /* Sidebar becomes a sliding menu */
-    .sidebar {
-      position: fixed;
-      left: -250px;
-      top: 0;
-      height: 100vh;
-      width: 250px;
-      background-color: white;
-      z-index: 5;
-      transition: left 0.3s ease;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    }
-    
-    .sidebar.active {
-      left: 0;
-    }
-    
-    /* Add close button to sidebar */
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      cursor: pointer;
-      font-size: 24px;
-    }
-    
-    /* Main content takes full width */
-    .main {
-      grid-area: main;
-      padding: 1rem;
-    }
-    
-  }
-  
-  /* Smaller screens */
-  @media (max-width: 480px) {
-    .navbar {
-      padding: 1rem;
-    }
-    
-    .name-container h1 {
-      font-size: 1.5rem;
-    }
-    
-  }
+}
 
-  .close-btn {
-    display: none;
-  }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    /* Mobil görünümde sidebar ve kapatma butonu için stil */
-    .sidebar {
-      position: fixed;
-      left: -250px;
-      top: 0;
-      height: 100vh;
-      width: 250px;
-      background-color: white;
-      z-index: 50;
-      transition: left 0.3s ease;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    }
-    
-    .sidebar.active {
-      left: 0;
-    }
-    
-    /* Sidebar aktif olduğunda kapatma butonunu göster */
-    .sidebar.active .close-btn {
-      display: block;
-    }
-  }
+/* Main */
+.main {
+    grid-area: main;
+    padding: 1rem;
+}
 
-
-  /* Tam sayfa menü için kapatma butonu */
+/* Tam sayfa menü için kapatma butonu */
 .close-menu-btn {
     display: none;
     position: fixed;
@@ -238,128 +143,133 @@ body {
     color: #000;
     cursor: pointer;
     z-index: 200;
-  }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    /* Güncellenen grid düzeni */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
     body {
-      grid-template-columns: 1fr;
-      grid-template-areas: 
-        "navbar"
-        "main";
+        grid-template-columns: 1fr;
+        grid-template-areas:
+      "navbar"
+      "main";
     }
-    
-    /* Hamburger göster, nav linklerini gizle */
+
     .hamburger-menu {
-      display: block;
+        display: block;
     }
-    
-    /* Tam sayfa menü stili */
+
     .navbar ul.nav-links {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: white;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
     }
-    
+
     .navbar ul.nav-links.active {
-      display: flex;
+        display: flex;
     }
-    
+
     .navbar ul.nav-links li {
-      margin: 20px 0;
+        margin: 20px 0;
     }
-    
-    /* Sidebar'ı gizle (artık kullanılmıyor) */
+
+    /* Sidebar'ı mobilde gizle */
     .sidebar {
-      display: none;
+        display: none;
     }
-    
-    /* Ana içerik tam genişlikte */
+
     .main {
-      grid-area: main;
-      padding: 1rem;
+        padding: 1rem;
     }
-    
-  }
-  
-  /* Daha küçük ekranlar */
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
     .navbar {
-      padding: 1rem;
+        padding: 1rem;
     }
-    
+
     .name-container h1 {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-    
-  }
-
-
-/* Devil peek in navbar */
-.navbar{
-  position: relative; /* for absolute devil */
 }
 
+/* =========================
+   DEVIL (Navbar Peek)
+   ========================= */
 
-.nav-devil{
-  position: absolute;
-  top: -18px;      /* peek from above */
-  right: 14px;
-  width: 360px;
-  height: 220px;   /* allow overlap below navbar */
-  pointer-events: none;
-  z-index: 50;
+.nav-devil {
+    position: absolute;
+    top: -24px;     /* ⬅ hafif yukarı taş */
+    right: -20px;
+
+    width: 560px;  /* ⬅ büyüklük */
+    height: 340px; /* ⬅ eller + yüz sığsın */
+
+    pointer-events: none;
+    z-index: 50;
 }
 
-.devil-wrap{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: visible;     /* “pencere/pervaz” kırpma */
-  /* Eye anchor points are percentages of the *image* bounds (not the wrap) */
-  --eyeLx: 52%;
-  --eyeLy: 49%;
-  --eyeRx: 63.5%;
-  --eyeRy: 49%;
+.devil-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
 
-  --eyeLr: 0.9%;
-  --eyeRr: 0.9%;
+    /* Göz anchor noktaları (img üstündeki yüzde) */
+    --eyeLx: 50.5%;
+    --eyeLy: 46.5%;
+    --eyeRx: 61.8%;
+    --eyeRy: 46.5%;
+
+    /* pupil'in göz içinde kalacağı yarıçap (img genişliğinin yüzdesi) */
+    --eyeLr: 1.15%;
+    --eyeRr: 1.15%;
 }
 
-.devil-img{
-  position: absolute;
-  right: -82px;       /* move image to the right for peek composition */
-  top: -18px;
-  width: 480px;
-  height: auto;
-  image-rendering: auto;
-  user-select: none;
-}
-
-.pupil {
-  width: 7px;          /* DAHA KÜÇÜK */
-  height: 7px;
-  border-radius: 50%;
-  background: #000;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-@media (max-width: 768px){
-  .nav-devil{ 
-    top: -12px;
+.devil-img {
+    position: absolute;
     right: 0px;
-    width: 280px;
-    height: 180px;
-  }
+    top: 42px;     /* ⬅⬅⬅ Eller çizgiye otursun: 30-60 arası oynat */
+    width: 560px;
+    height: auto;
+
+    user-select: none;
+}
+
+/* Pupil: küçük ve temiz */
+.pupil {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #000;
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* Mobilde biraz küçült */
+@media (max-width: 768px) {
+    .nav-devil {
+        top: -10px;
+        right: -10px;
+        width: 380px;
+        height: 240px;
+    }
+
+    .devil-img {
+        width: 380px;
+        top: 30px;
+    }
+
+    .navbar::after {
+        top: 92px;
+    }
 }
