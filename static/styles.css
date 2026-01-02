@@ -329,22 +329,17 @@ body {
    MANIFESTO TYPO (medieval spread)
    ========================= */
 .manifesto{
-  position: relative;
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 64px 56px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 64px 56px;
 
-  font-family: "EB Garamond", serif;
-  font-size: 18px;
-  line-height: 1.8;
-  letter-spacing: 0.01em;
-  color: #111;
+    column-count: 2;
+    column-gap: 120px;
 
-  column-count: 2;
-  column-gap: 140px; /* keep space for ornament */
-  column-fill: auto;
+    font-family: "EB Garamond", serif;
+    font-size: 18px;
+    line-height: 1.8;
 }
-
 .manifesto p{
   break-inside: avoid;
   margin: 0 0 1.35em 0;
@@ -370,19 +365,9 @@ body {
   color: #000;
 }
 
-/* Ornament divider in the column gap */
-.manifesto::after{
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 64px;
-  bottom: 64px;
 
-  width: 26px;
-  background: url("/ornament.png") center / contain no-repeat;
-  pointer-events: none;
-  opacity: 0.55;
+.manifesto::after{
+    display: none;
 }
 
 @media (max-width: 900px){
