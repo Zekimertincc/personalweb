@@ -23,8 +23,8 @@ nav_links = [
 ]
 
 sidebar_categories = [
-  { name = "Category 1", url = "#" },
-  { name = "Category 2", url = "#" },
-  { name = "Category 3", url = "#" },
-  { name = "Category 4", url = "#" }
+  { name = "Blog", url = "/blog/" },
+  { name = "Collages", url = "/collages/" },
+  { name = "Projects", url = "/projects/" },
+  { name = "Contact", url = "/contact/" }
 ]
