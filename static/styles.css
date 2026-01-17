@@ -203,6 +203,18 @@ body {
     .name-container h1 {
         font-size: 1.5rem;
     }
+
+    .nav-devil {
+        right: 0.5rem;
+        bottom: -78px;
+        width: 240px;
+        height: 170px;
+    }
+
+    .devil-img {
+        width: 240px;
+        bottom: 6px;
+    }
 }
 
 /* =========================
