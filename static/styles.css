@@ -279,11 +279,13 @@ body {
     .devil-img {
         width: 320px;
         bottom: 14px;
+        top: 40px;
     }
 
     .navbar::after {
         left: 0;
     }
+
 }
 
 /* =========================
