@@ -383,3 +383,77 @@ a{
   }
   .manifesto::after{ display: none; }
 }
+
+.projects-page {
+    padding: 56px 40px;
+}
+
+.projects-intro {
+    max-width: 720px;
+    margin-bottom: 48px;
+}
+
+.projects-intro h1 {
+    font-family: "EB Garamond", serif;
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+}
+
+.projects-intro p {
+    font-family: "EB Garamond", serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+}
+
+.project-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #000;
+    background: #fff;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-card-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #000;
+}
+
+.project-card-body {
+    padding: 18px 18px 22px;
+}
+
+.project-card-body h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.project-card-body p {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-page {
+        padding: 40px 24px;
+    }
+}

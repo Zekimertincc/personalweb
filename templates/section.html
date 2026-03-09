@@ -1,6 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if section.path == "projects/_index.md" %}
+<div class="projects-page">
+    <div class="projects-intro">
+        <h1>{{ section.title }}</h1>
+        {{ section.content | safe }}
+    </div>
+
+    <div class="projects-grid">
+        {% for page in section.pages %}
+        <a class="project-card" href="{{ page.extra.external_url | default(value=page.permalink) }}" target="_blank" rel="noopener noreferrer">
+            {% if page.extra.image %}
+            <img src="{{ page.extra.image }}" alt="{{ page.title }}" class="project-card-image">
+            {% endif %}
+
+            <div class="project-card-body">
+                <h2>{{ page.title }}</h2>
+
+                {% if page.extra.description %}
+                <p>{{ page.extra.description }}</p>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
 <div class="manifesto">
     <h1>{{ section.title }}</h1>
     {{ section.content | safe }}
@@ -16,4 +42,5 @@
     </ul>
     {% endif %}
 </div>
+{% endif %}
 {% endblock content %}

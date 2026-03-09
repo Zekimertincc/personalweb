@@ -8,33 +8,18 @@ template = "index.html"
 Hi, welcome.  
 My name is Zeki *(pronounced: /ˈzɛki/).*
 
-I’m a Paris-based creative technologist.
+I’m currently a second-year student in the BUT Informatique program in Paris, with a strong interest in web technologies and  arts.
 
-I’m interested in the spaces where culture, art, technology and human emotion intersect —  
-especially where things stop fitting neatly into categories.
+Alongside my studies, I explore different forms of digital expression — including experimental audio-reactive projects/installations, generative visuals, collage work, and music production for film and video.
 
-I’m often described as a *jack of all trades*.  
-I don’t see that as a lack of focus, but as a way of navigating ideas across mediums rather than being confined to one.
+I enjoy working at the intersection of technology, art, and storytelling, and I’m especially interested in projects where code becomes a creative medium.
 
-I help people shape their presence on the internet —  
-whether that means a personal website, a web app, a landing page, or something less clearly defined —  
-always with an emphasis on personality, atmosphere and intention rather than templates or trends.
+I am currently looking for an internship in computer science to complete the second year of my BUT Informatique program.
 
-Alongside that, I work across visual and sonic forms:  
-design projects, brand identities, flyers, moving images, VJ work,  
-and original music composed specifically for videos and visual narratives.
+While I have a strong interest in web technologies , I am open to a wide range of technical environments — from web development and software architecture to lower-level systems programming.
 
-This space is where I document and share ongoing experiments and explorations —  
-not as finished answers, but as processes in motion.
+More than a specific stack, I am interested in learning, solving problems, and contributing to meaningful projects while gaining real-world experience.
 
-These are not well-traveled paths, and that’s precisely why I believe in sharing them:  
-to encourage others to explore further, exchange ideas, and form connections along the way.
+If you think I could be a good fit for your team or project, feel free to reach out.
 
-Feel free to reach out by email for commissioned work, questions,  
-or simply to talk. *(We could all be pen pals.)*
-
-Even if you don’t have a budget, don’t hesitate to get in touch.  
-I care more about the energy behind an idea than its resources.  
-Conversations like these are often where the interesting work begins.
-
-**Let’s see what emerges.**
+Available for internship starting April 2026.
