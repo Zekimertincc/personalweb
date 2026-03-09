@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% if page.relative_path == "contact.md" %}
+  <div class="manifesto">
+    <h1>{{ page.title }}</h1>
+    {{ page.content | safe }}
+  </div>
+  {% else %}
   <article class="post">
     <h1>{{ page.title }}</h1>
     {% if page.date %}
@@ -19,4 +25,5 @@
       {{ page.content | safe }}
     </div>
   </article>
+  {% endif %}
 {% endblock content %}
