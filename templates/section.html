@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if section.relative_path == "projects/_index.md" %}
+{% if section.path == "/projects/" or section.path == "/collages/" %}
 <div class="projects-page">
     <div class="projects-intro">
         <h1>{{ section.title }}</h1>
