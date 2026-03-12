@@ -1,46 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.querySelector(".hamburger");
-  const navLinks = document.querySelector(".nav-links");
+  const hamburger = document.querySelector(".hamburger-menu");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const mobileMenuClose = document.querySelector(".mobile-menu-close");
 
-  // Tam sayfa menü için kapatma butonu oluştur
-  const closeMenuButton = document.createElement("div");
-  closeMenuButton.className = "close-menu-btn";
-  closeMenuButton.innerHTML = "&times;";
-  closeMenuButton.style.position = "absolute";
-  closeMenuButton.style.top = "20px";
-  closeMenuButton.style.right = "20px";
-  closeMenuButton.style.fontSize = "30px";
-  closeMenuButton.style.cursor = "pointer";
-  closeMenuButton.style.zIndex = "200";
-  closeMenuButton.style.display = "none";
-  document.body.appendChild(closeMenuButton);
-
-  // Kapatma butonuna tıklama olayı ekle
-  closeMenuButton.addEventListener("click", function () {
-    navLinks.classList.remove("active");
-    closeMenuButton.style.display = "none";
-  });
-
-  // Hamburger menüsüne tıklama olayı
-  if (hamburger) {
-    hamburger.addEventListener("click", function (e) {
-      e.stopPropagation();
-      navLinks.classList.add("active");
-      closeMenuButton.style.display = "block";
-    });
+  function setMobileMenu(open) {
+    if (!mobileMenu || !hamburger) return;
+    mobileMenu.classList.toggle("active", open);
+    hamburger.setAttribute("aria-expanded", String(open));
+    mobileMenu.setAttribute("aria-hidden", String(!open));
+    document.body.classList.toggle("menu-open", open);
   }
 
-  // Sayfa dışına tıklanınca menüler kapanacak
-  document.addEventListener("click", function (event) {
-    if (
-        navLinks.classList.contains("active") &&
-        !navLinks.contains(event.target) &&
-        event.target !== hamburger
-    ) {
-      navLinks.classList.remove("active");
-      closeMenuButton.style.display = "none";
-    }
-  });
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener("click", function () {
+      setMobileMenu(!mobileMenu.classList.contains("active"));
+    });
+
+    mobileMenuClose?.addEventListener("click", function () {
+      setMobileMenu(false);
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setMobileMenu(false));
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") setMobileMenu(false);
+    });
+  }
 
   // Rastgele hover rengi işlevi
   const categoryItems = document.querySelectorAll(".sidebar .content");
