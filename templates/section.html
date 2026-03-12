@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if section.path == "/projects/" or section.path == "/collages/" %}
+{% if section.path == "/projects/" %}
 <div class="projects-page">
     <div class="projects-intro">
         <h1>{{ section.title }}</h1>
@@ -21,6 +21,32 @@
                 {% if page.extra.description %}
                 <p>{{ page.extra.description }}</p>
                 {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% elif section.path == "/collages/" %}
+<div class="artwork-page">
+    <div class="artwork-intro">
+        <h1>{{ section.title }}</h1>
+        {{ section.content | safe }}
+    </div>
+
+    <div class="artwork-grid">
+        {% for page in section.pages %}
+        <a class="artwork-item artwork-item--{{ page.extra.size | default(value='medium') }}" href="{{ page.permalink }}">
+            {% if page.extra.image %}
+            <img src="{{ page.extra.image }}" alt="{{ page.title }}" class="artwork-image">
+            {% endif %}
+
+            <div class="artwork-overlay">
+                <div class="artwork-meta">
+                    <h2>{{ page.title }}</h2>
+                    {% if page.extra.year %}
+                    <span>{{ page.extra.year }}</span>
+                    {% endif %}
+                </div>
             </div>
         </a>
         {% endfor %}

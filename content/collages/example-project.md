@@ -1,8 +1,10 @@
 +++
-title = "Example Project"
+title = "Night Study"
 
 [extra]
-description = "Short project description here."
-image = "/projects/example-project.jpg"
-external_url = "https://github.com/example/repo"
+image = "/projects/altin.png"
+year = "2024"
+size = "large"
 +++
+
+A compositional study focused on depth, contrast, and texture layering.
