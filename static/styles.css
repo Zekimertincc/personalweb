@@ -457,3 +457,169 @@ a{
         padding: 40px 24px;
     }
 }
+.artwork-page {
+    padding: 56px 40px;
+}
+
+.artwork-intro {
+    max-width: 640px;
+    margin-bottom: 40px;
+}
+
+.artwork-intro h1 {
+    font-family: "EB Garamond", serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.artwork-intro p {
+    font-family: "EB Garamond", serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.artwork-grid {
+    column-count: 3;
+    column-gap: 18px;
+}
+
+.artwork-item {
+    position: relative;
+    display: block;
+    margin-bottom: 18px;
+    break-inside: avoid;
+    overflow: hidden;
+    background: #f7f7f7;
+}
+
+.artwork-image {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.artwork-item--small .artwork-image {
+    aspect-ratio: 4 / 3;
+}
+
+.artwork-item--medium .artwork-image {
+    aspect-ratio: 3 / 4;
+}
+
+.artwork-item--large .artwork-image {
+    aspect-ratio: 2 / 3;
+}
+
+.artwork-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 65%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.artwork-item:hover .artwork-overlay,
+.artwork-item:focus-visible .artwork-overlay {
+    opacity: 1;
+}
+
+.artwork-item:hover .artwork-image,
+.artwork-item:focus-visible .artwork-image {
+    transform: scale(1.02);
+}
+
+.artwork-meta h2,
+.artwork-meta span {
+    color: #fff;
+}
+
+.artwork-meta h2 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.artwork-meta span {
+    font-size: 0.88rem;
+    letter-spacing: 0.06em;
+    opacity: 0.9;
+}
+
+.artwork-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 56px 24px 72px;
+}
+
+.artwork-detail-hero-wrap {
+    margin-bottom: 28px;
+}
+
+.artwork-detail-hero {
+    width: 100%;
+    max-height: 78vh;
+    object-fit: contain;
+    display: block;
+    background: #f8f8f8;
+}
+
+.artwork-detail-header {
+    margin-bottom: 18px;
+}
+
+.artwork-detail-header h1 {
+    font-family: "EB Garamond", serif;
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.artwork-detail-year {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.artwork-detail-body {
+    max-width: 680px;
+    font-family: "EB Garamond", serif;
+    font-size: 1.2rem;
+    line-height: 1.75;
+}
+
+@media (max-width: 1080px) {
+    .artwork-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 900px) {
+    .artwork-page {
+        padding: 40px 24px;
+    }
+
+    .artwork-grid {
+        column-gap: 14px;
+    }
+
+    .artwork-item {
+        margin-bottom: 14px;
+    }
+}
+
+@media (max-width: 640px) {
+    .artwork-grid {
+        column-count: 1;
+    }
+
+    .artwork-overlay {
+        opacity: 1;
+    }
+}
