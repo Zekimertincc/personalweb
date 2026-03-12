@@ -24,7 +24,7 @@ nav_links = [
 
 sidebar_categories = [
   { name = "Blog", url = "/blog/" },
-  { name = "Collages", url = "/collages/" },
+  { name = "Artwork", url = "/collages/" },
   { name = "Projects", url = "/projects/" },
   { name = "Contact", url = "/contact/" }
 ]
