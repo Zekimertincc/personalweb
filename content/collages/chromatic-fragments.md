@@ -2,9 +2,9 @@
 title = "Chromatic Fragments"
 
 [extra]
-image = "/projects/kana.png"
-year = "2023"
+image = "/projects/algo.png"
+year = "2025"
 size = "small"
 +++
 
-Fragments collected from interface sketches and recombined into a denser image plane.
+Study of mathematical functions and algorith and how they can be implemented in visual arts  

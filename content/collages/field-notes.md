@@ -1,10 +1,9 @@
 +++
-title = "Field Notes"
+title = "Art installation project"
 
 [extra]
-image = "/projects/terraria.png"
-year = "2022"
+image = "/projects/hand.png"
+year = "2026"
 size = "medium"
 +++
-
-A collage series about atmosphere, repetition, and accidental geometry.
+Installation project where Real-time hand tracking controlling generative visuals. Built using MediaPipe and TouchDesigner to explore gesture-based interaction.
