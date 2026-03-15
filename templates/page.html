@@ -22,6 +22,9 @@
     </header>
 
     <div class="artwork-detail-body">
+      {% if page.extra.description %}
+      <p>{{ page.extra.description }}</p>
+      {% endif %}
       {{ page.content | safe }}
     </div>
   </article>
