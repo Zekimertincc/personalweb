@@ -26,5 +26,5 @@ sidebar_categories = [
   { name = "Blog", url = "/blog/" },
   { name = "Artwork", url = "/collages/" },
   { name = "Projects", url = "/projects/" },
-  { name = "Contact", url = "/contact/" }
+  { name = "Contact / CV", url = "/contact/" }
 ]
