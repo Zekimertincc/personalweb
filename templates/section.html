@@ -35,7 +35,7 @@
 
     <div class="artwork-grid">
         {% for page in section.pages %}
-        <a class="artwork-item artwork-item--{{ page.extra.size | default(value='medium') }}" href="{{ page.permalink }}">
+        <a class="artwork-item artwork-item--{{ page.extra.size | default(value='medium') }}" href="{{ page.rel_permalink }}">
             {% if page.extra.image %}
             <img src="{{ page.extra.image }}" alt="{{ page.title }}" class="artwork-image">
             {% endif %}
